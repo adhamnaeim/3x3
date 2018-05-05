@@ -1,2 +1,0 @@
-post your issues here as follows:
-[folder->file][line][problem][additional info.]
