@@ -1,4 +1,5 @@
 
+
 from random import choice
 slots=['','','','','','','','',''] #global list used to insert (1 or more user's) or the computer's input. 
 demo=['1','2','3','4','5','6','7','8','9'] #demo list to show the user how to use the board.
@@ -9,6 +10,7 @@ the concept is pretty simple, you choose whether you want to play with the compu
 each player will try to hit his/her letter (X or Z) horizontally, vertically, or diagonally in 3 slots.
 who ever claims three consecutive of his letter, Wins the game!
 ''') 
+
 def SingleOrMulti():
     gametype=''
     while gametype=='':
@@ -24,6 +26,7 @@ def SingleOrMulti():
         else:
             print('oh-oh. use y for yes and n for no. no capitalization.')
      
+
  
 def shwBoard(board): #function that prints the board using a list.
     print('' +board[0]+ '  | ' +board[1]+ '  | '+board[2] )
@@ -31,10 +34,13 @@ def shwBoard(board): #function that prints the board using a list.
     print('' +board[6]+ '  | ' +board[7]+ '  | '+board[8] )
     print('-------------')
 
+
 #shwBoard(slots)    
     
     
+
 #player1 chooses who goes first, whether P1 is playing W comp or P2            
+
 def whosfirst():
     answertype=''
     while answertype=='':
@@ -53,13 +59,17 @@ def whosfirst():
 
 ###def multiTTT():
 
+
 def emptyspace(plyr_mve): #function that identifies blank spaces in the global list (slot)
+
     if slots[plyr_mve] == '':
         return True
     else:
         return False
 
+
 def compmove(): #Function that chooses the comp move based on random choice built in function and stores it in (slots) list
+
     state=bool
     while state != True:    
         x =choice(list(range(8)))
@@ -70,15 +80,17 @@ def compmove(): #Function that chooses the comp move based on random choice buil
         shwBoard(slots)
 
 
+
 def player1move(symb): #function that lets the player choose his move and stores it into (slots) list 
      
     shwBoard(demo)
     while True:
+
         loc=int(input("choose your move's place from 1-9 as stated in the board infront of you"))-1
         if emptyspace(loc) == True:
             slots[loc]=symb
             shwBoard(slots)
-            
+
             break
 
                 
@@ -89,6 +101,7 @@ def player1move(symb): #function that lets the player choose his move and stores
         
         
 def boardfull(): #checks if the board is full and prints that game has ended.
+
     marker=0
     for i in slots:
         if i == "":
@@ -98,9 +111,10 @@ def boardfull(): #checks if the board is full and prints that game has ended.
         print("oh no it's a draw.")        
         return True
         
+
 def checkwin(symb):#checks if either X or Z hit one of the possible winning combinations.
     status=True
-    index_count=0
+
     possible=[[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]]
     
     for item in possible:
@@ -113,6 +127,7 @@ def checkwin(symb):#checks if either X or Z hit one of the possible winning comb
     else:
         status=False
         return status
+
                     
 '''
 def gameon():
@@ -124,6 +139,7 @@ def gameon():
         status=False
         return status
 '''
+
 def runGame(): # the central code that runs the game
     help() #introduces player to the rules and the team
     mode=SingleOrMulti() #user chooses game mode
@@ -133,6 +149,7 @@ def runGame(): # the central code that runs the game
                 player1move('X')
                 checkwin('X')
                 boardfull()
+
                 if checkwin('X')==False: #if p1 move causes the game to move on without winning condition or draw, p2 plays
                     player1move('Z')
                     checkwin('Z')
@@ -152,10 +169,12 @@ def runGame(): # the central code that runs the game
                     break
     if mode == 'single': #if player chooses single with comp
         if whosfirst()== 'yes': #player chooses to go first
+
             while True:
                 player1move('X')
                 checkwin('X')
                 boardfull()
+
                 if checkwin('X')==False: #if p1 move causes the game to move on without winning condition or draw, comp plays
                     compmove()
                     checkwin('Z')
@@ -173,7 +192,8 @@ def runGame(): # the central code that runs the game
                 else:
                     print('you won recent player!')
                     break
-runGame()
+
+
 
         
 
