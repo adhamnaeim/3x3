@@ -17,7 +17,7 @@ def SingleOrMulti():
         else:
             print('oh-oh. use y for yes and n for no. no capitalization.')
      
-def demoboard():
+def demoboard(board):
     print('' +board[0]+ '  | ' +board[1]+ '  | '+board[2] )
     print('' +board[3]+ '  | ' +board[4]+ '  | '+board[5] )
     print('' +board[6]+ '  | ' +board[7]+ '  | '+board[8] )    
@@ -104,9 +104,8 @@ def checkwin():
         return False
 '''
 def checkwin(symb):
-    index_count=0
+
     possible=[[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]]
-    outcome=[]
     
     for item in possible:
         emp_lst=[]
@@ -148,9 +147,9 @@ def runGame():
                     player1move('X')
                     print(checkwin('X'))        
     if mode == 'single':
-        if whosfirst()== 'yes':
+        if whosfirst() == 'yes':
             while True:
-                player1move()
+                player1move('X')
                 checkwin('X')
                 boardfull()
                 if checkwin('X')==False:
@@ -162,7 +161,7 @@ def runGame():
                 compmove()
                 print(checkwin('Z'))
                 if checkwin('Z')==False:
-                    player1move()
+                    player1move('X')
                     print(checkwin('X'))
             
         
