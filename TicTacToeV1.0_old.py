@@ -1,3 +1,4 @@
+#V1.0_final
 from random import choice
 from Siga import showBoard
 
